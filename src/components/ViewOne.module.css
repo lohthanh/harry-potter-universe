@@ -1,0 +1,39 @@
+.container {
+    width: 60rem;
+    border: 2px solid black;
+    margin-left: 25%;
+    margin-top: 30px;
+    padding: 5px;
+    opacity: 0.8;
+    font-weight: bold;
+    font-size: large;
+    background-color: rgb(199, 199, 199);
+    border-radius: 20px;
+}
+
+.display {
+    display: flex;
+}
+
+.movieBg {
+    background-image: url(C:\Users\lohth\OneDrive\Desktop\CodingDojo\Projects\harryPotterUniverse\server\client\public\vector-harry-potter-magic-pattern.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+
+.container2 {
+    border: 2px solid black;
+    margin-top: 30px;
+    padding: 5px;
+    opacity: 0.85;
+    font-weight: bold;
+    font-size: large;
+    background-color: rgb(197, 193, 193);
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: rebeccapurple;
+    color: aliceblue;
+}

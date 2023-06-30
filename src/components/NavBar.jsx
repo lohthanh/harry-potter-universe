@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Display.module.css';
+import { motion } from 'framer-motion';
+
 
 const NavBar = (props) => {
 
@@ -9,7 +11,7 @@ const NavBar = (props) => {
     const homePageLink = () => {
         if (!isHomePage) {
             return (
-                <p><Link to={'/'}>Home Page</Link></p>
+                <motion.p  whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/'}>Home Page</Link></motion.p>
             )
         };
     };
@@ -17,22 +19,18 @@ const NavBar = (props) => {
     return (
         <div className={`${styles.navbar}`}>
             <div>
-                <p><Link to={'/characters'}>Characters</Link></p>
-                <p><Link to={'/movies'}>Movies</Link></p>
-                <p><Link to={'/books'}>Books</Link></p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/movies'}>Movies</Link></motion.p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/books'}>Books</Link></motion.p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/characters'}>Characters</Link></motion.p>
             </div>
             <div>
-                <p><Link to={'/houses'}>Houses</Link></p>
-                <p><Link to={'/spells'}>Spells</Link></p>
-                <p><Link to={'/potions'}>Potions</Link></p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/houses'}>Houses</Link></motion.p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/spells'}>Spells</Link></motion.p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/potions'}>Potions</Link></motion.p>
             </div>
             <div>
-                <p><Link to={'/species'}>Fantasical Beasts</Link></p>
-                <p><Link to={'/wands'}>Wands</Link></p>
-                <p><Link to={'/locations'}>Magical Locations</Link></p>
-            </div>
-            <div>
-                <p><Link to={'/quiz'}>Sorting Quiz</Link></p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/locations'}>Magical Locations</Link></motion.p>
+                <motion.p whileHover={{scale: 1.2, transition: {duration: 0.7}}}><Link to={'/quiz'}>Sorting Quiz</Link></motion.p>
                 {/* if this is the home page, don't show link, if its not, show link */}
                 {
                  homePageLink()   

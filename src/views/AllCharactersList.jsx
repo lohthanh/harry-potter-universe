@@ -7,10 +7,10 @@ const AllCharactersList = (props) => {
     const [allCharacterList, setAllCharacterList] = useState('');
 
     useEffect(() => {
-        axios.get('https://api.potterdb.com/v1/characters')
+        axios.get('https://hp-api.onrender.com/api/characters')
             .then(res => {
-                console.log(res.data.data);
-                setAllCharacterList(res.data.data);
+                console.log(res.data);
+                setAllCharacterList(res.data);
             })
             .catch(err => console.error(err));
     }, []);
@@ -28,7 +28,7 @@ const AllCharactersList = (props) => {
                 {allCharacterList &&
                     allCharacterList.map((name, i) => {
                         return <p key={i}>
-                            {name.attributes.name}
+                            {name.name}
                         </p>
                     })
                 }

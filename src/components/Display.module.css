@@ -1,12 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
+
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 .navbar {
     display: flex;
     justify-content: space-around;
-    border: 3px solid black;
+    border: 2px solid black;
     width: 60rem;
     height: 8rem;
     align-items: center;
     text-align: center;
-    margin-left: 32rem;
+    margin-left: 25%;
     border-radius: 15px;
-    margin-top: 15px;
+    background-color: rgb(225, 231, 236);
+    opacity: 0.8;
+    font-weight: bold;
+    margin-bottom: 35px;
 }
+
+/* main */
+.bgMain {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.8)) , url(https://wallpapers.com/images/hd/the-hogwarts-express-train-1920-x-986-wallpaper-6hqw6d0ba9rgrxol.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+/* books display */
+
+.img {
+    width: 10rem;
+    height: auto;
+}
+
+.book:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.movie:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.display {
+    display: flex;
+    width: 100rem;
+    margin-left: 8%;
+}
+
+.bgImg {
+    background-image: url(C:\Users\lohth\OneDrive\Desktop\CodingDojo\Projects\harryPotterUniverse\server\client\public\hp-marauders-map.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+   
+}
+
+.title {
+    font-weight: bold;
+    font-size: large;
+    background-color: rgb(231, 190, 135);
+    opacity: 0.8;
+}
+
+.bookTitle {
+    margin-bottom: 40px;
+    font-size: 3em;
+    color: rgb(145, 51, 51);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+/* movie display */
+
+.bgMovie {
+    background-image: url(C:\Users\lohth\OneDrive\Desktop\CodingDojo\Projects\harryPotterUniverse\server\client\public\hp-wall-portraits.jpg);
+    height: 100vh;
+    opacity: 0.9;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.movieDisplay {
+    display: flex;
+    margin-top: 35px;
+    width: 100rem;
+    margin-left: 35px;
+}
+
+.marginTop {
+    margin-top: 10px;
+    margin-bottom: 19px;
+}
+
+.movieTitle {
+    font-size: 3em;
+    color: rgb(186, 216, 17);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;;
+}
+
+/* house display */
+
+.houseDisplay {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+}
+
+.house:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    font-weight: bold;
+}
+
+.bgHouse {
+    background-image: url(C:\Users\lohth\OneDrive\Desktop\CodingDojo\Projects\harryPotterUniverse\server\client\public\hp-houses.jpg);
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+.displayDiv {
+    color: white;
+    font-size: large;
+    opacity: 0.9;
+    width: 110rem;
+}
+
+.houseTitle {
+    font-size: 3em;
+    font-weight: bold;
+    color: rgb(248, 214, 173);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.houseNames {
+    font-size: large;
+    color: rgb(158, 43, 211);
+}
+
+/* spells */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(9, 12rem);
+    grid-auto-rows: 23em;
+    inline-size: 200px;
+    margin-left: 6rem;
+    margin-top: 5rem;
+    font-weight: bold;
+    color: rgb(238, 220, 220);
+}
+
+.spellImg {
+    border-radius: 15px;
+    width: 180px;
+    height: auto;
+}
+
+.spell:hover {
+    transform: scale(1.5);
+}
+
+.altImg {
+    border-radius: 15px;
+    width: 100px;
+    height: auto;
+}
+
+.bgSpell {
+    background-image: url(https://m.media-amazon.com/images/I/71aW1-igHnL.jpg);
+}
+
+.spellsTitle {
+    font-size: 3em;
+    color: rgb(55, 6, 77);
+    text-shadow: 2px 2px white;
+}
+
+/* potions */
+
+.displayPotions {
+    display: grid;
+    grid-template-columns: repeat(8, 13rem);
+    grid-auto-rows: 28em;
+    inline-size: 200px;
+    margin-left: 6rem;
+    margin-top: 5rem;
+    font-weight: bold;
+    color: rgb(180, 235, 130);
+}
+
+.potionImg {
+    border-radius: 15px;
+    width: 90px;
+    height: auto;
+}
+
+.potions:hover {
+    transform: scale(1.5);
+}
+
+.potionAlt {
+    width: 120px;
+}
+
+.bgPotions {
+    background-image: url(https://images.nightcafe.studio/jobs/bkOP7WhTzxASbYG1vZa6/bkOP7WhTzxASbYG1vZa6--4--17137.jpg?tr=w-1600,c-at_max);
+    background-position: center;
+    opacity: 0.9;
+}
+
+.potionTitle {
+    margin-left: -3em;
+    font-size: 4em;
+    color: black;
+  -webkit-text-fill-color: rgb(36, 177, 36);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+/* main home page */
+.displayMain {
+    width: 700px;
+    height: 500px;
+    background-image: url(https://media.vanityfair.com/photos/56167e0efee6babf300f5396/master/w_1600%2Cc_limit/hogwarts-new-harry-potter-ebooks-01.gif);
+    position: relative;
+    left: 35rem;
+    top: 5rem;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.displayContainer {
+    background-color: black;
+    height: 100vh;
+}
+
+.h1 {
+    color: white;
+    font-size: 8rem;
+    font-style: italic;
+}
+
+/* quiz */
+
+.btn {
+    margin-bottom: 5px;
+    width: 25rem;
+    height: 3rem;
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    color: rebeccapurple;
+}
+
+.bgQuiz {
+    background-image: url(https://a-static.besthdwallpaper.com/hogwarts-hall-from-harry-potter-movie-wallpaper-2880x1800-108072_8.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.textColor {
+    color: white;
+}
+
+.gryffindorTheme {
+    background: linear-gradient(to right, #ff0000, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .slytherinTheme {
+    background: linear-gradient(to right, #2a623d, #1a472a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .ravenclawTheme {
+    background: linear-gradient(to right, #000a90, #222f5b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hufflepuffTheme {
+    background: linear-gradient(to right, #ffc800, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

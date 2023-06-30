@@ -8,9 +8,8 @@ import AllBooksList from './views/AllBooksList';
 import AllHousesList from './views/AllHousesList';
 import AllSpellsList from './views/AllSpellsList';
 import AllPotionsList from './views/AllPotionsList';
-import AllSpeciesList from './views/AllSpeciesList';
-import AllWandsList from './views/AllWandsList';
 import Quiz from './components/Quiz';
+import OneMovie from './views/OneMovie';
 
 
 function App() {
@@ -25,9 +24,8 @@ function App() {
       <Route path='/houses' element={<AllHousesList />} />
       <Route path='/spells' element={<AllSpellsList />} />
       <Route path='/potions' element={<AllPotionsList />} />
-      <Route path='/species' element={<AllSpeciesList />} />
-      <Route path='/wands' element={<AllWandsList />} />
       <Route path='/quiz' element={<Quiz />} />
+      <Route path='/movies/:id' element={<OneMovie />} />
     </Routes>
 
     </div>

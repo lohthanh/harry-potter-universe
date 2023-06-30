@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import axios from 'axios';
+import styles from '../components/Display.module.css';
+import { motion } from 'framer-motion';
 
 const AllSpellsList = () => {
 
@@ -17,14 +19,27 @@ const AllSpellsList = () => {
 
 
     return (
-        <div>
+        <div className={styles.bgSpell}>
             <NavBar />
-            <h1>All Spells</h1>
-            <div>
-                {spellList && spellList.map((name, i) => {
-                    return <p key={i}>
-                        {name.attributes.name}
-                    </p>
+            <motion.h1 
+                initial={{opacity: 0, scale: 0.5}}
+                animate={{opacity: 1, scale: 1}}
+                transition={{duration: 0.3, ease: 'linear'}} className={styles.spellsTitle}>Spells</motion.h1>
+            <div className={styles.grid}>
+                {spellList && spellList.map((spell, i) => {
+                    return <div key={i}>
+                        <div className={styles.spell}>
+                            {
+                                spell.attributes.image ?
+                                <img className={styles.spellImg} src={spell.attributes.image}/>
+                                : 
+                                <img className={styles.altImg} src='https://e1.pxfuel.com/desktop-wallpaper/370/936/desktop-wallpaper-magic-harry-potter-symbol-on-dog-harry-potter-symbols.jpg' />
+                            }
+                            <p>{spell.attributes.name}</p>
+                            <p>{spell.attributes.effect}</p>
+                           
+                        </div>
+                    </div>
                 })
                 }
 

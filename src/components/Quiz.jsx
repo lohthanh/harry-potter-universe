@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import NavBar from './NavBar';
+import styles from './Display.module.css';
+import { motion } from 'framer-motion';
 
 const Quiz = (props) => {
 
     const [answers, setAnswers] = useState({});
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [sortedHouse, setSortedHouse] = useState(null);
+    const [questionSet, setQuestionSet] = useState([]);
 
     const houseNames = {
         Gryffindor: 'Gryffindor',
@@ -126,21 +130,30 @@ const Quiz = (props) => {
 
 
     const handleAnswer = (questionId, choiceId) => {
-        setAnswers({...answers, [questionId]: choiceId});
+        setAnswers({ ...answers, [questionId]: choiceId });
         setCurrentQuestion(currentQuestion + 1);
     }
 
-    useEffect( () => {
-        if (currentQuestion === questions.length) {
-            calculateResult ();
+    useEffect(() => {
+        if (currentQuestion === 5) {
+            calculateResult();
         }
     }, [currentQuestion]);
 
+
     const handleReset = () => {
+        const randomQuestions = getRandom(5);
         setAnswers({});
         setCurrentQuestion(0);
         setSortedHouse(null);
-    }
+        setQuestionSet(randomQuestions);
+    };
+
+    const getRandom = number => {
+        const shuffleQuestions = questions.sort(() => Math.random() - 0.5);
+        return shuffleQuestions.slice(0, number);
+    };
+
 
     const calculateResult = () => {
         const houseVotes = {
@@ -162,7 +175,7 @@ const Quiz = (props) => {
             }
         });
 
-        const sortedHouse = Object.keys(houseVotes).reduce((a,b) => (houseVotes[a] > houseVotes[b] ? a : b));
+        const sortedHouse = Object.keys(houseVotes).reduce((a, b) => (houseVotes[a] > houseVotes[b] ? a : b));
 
         if (currentQuestion === questions.length - 1) {
             setSortedHouse(houseNames[sortedHouse]);
@@ -174,16 +187,25 @@ const Quiz = (props) => {
 
     }
 
+    const sortedHeads = {
+        Gryffindor: <img src={'https://i.gifer.com/12sE.gif'} alt='professor-minerva-mcgonagall' />,
+        Hufflepuff: <img src={'https://2.bp.blogspot.com/-WWPOQpAP6Sg/VVTLkAqdBXI/AAAAAAAAu5g/SC62l1MLudI/s1600/Harry-Potter-Pomona-Sprout-GIF-1430702825.gif'} alt='professor-pomana-sprout' />,
+        Ravenclaw: <img src={'https://images2.fanpop.com/image/photos/9300000/Another-day-with-Umbridge-hogwarts-professors-9350047-300-155.gif'} alt='professor-filius-flitwick' />,
+        Slytherin: <img src={'https://media.tenor.com/XJbMfck_ifgAAAAC/snape-clap.gif'} alt='professor-severus-snape' />,
+    }
+
+
     const renderQuestion = () => {
-        const question = questions[currentQuestion];
+        const randomQuestions = getRandom(5);
+        const questions = randomQuestions[currentQuestion]
 
         return (
             <div>
-                <h3>{question.question}</h3>
+                <h2 className={styles.textColor}>{questions.question}</h2>
                 <ul>
-                    {question.choices.map( choice => (
+                    {questions.choices.map(choice => (
                         <li key={choice.id}>
-                            <button onClick={() => handleAnswer(currentQuestion, choice.id)}>{choice.content}</button>
+                            <button className={styles.btn} onClick={() => handleAnswer(currentQuestion, choice.id)}>{choice.content}</button>
                         </li>
                     ))}
                 </ul>
@@ -192,21 +214,53 @@ const Quiz = (props) => {
     }
 
     const renderResult = () => {
+        let houseTheme = '';
+
+        switch (sortedHouse) {
+            case 'Gryffindor':
+                houseTheme = styles.gryffindorTheme;
+                break;
+            case 'Slytherin':
+                houseTheme = styles.slytherinTheme;
+                break;
+            case 'Ravenclaw':
+                houseTheme = styles.ravenclawTheme;
+                break;
+            case 'Hufflepuff':
+                houseTheme = styles.hufflepuffTheme;
+                break;
+            default:
+                break;
+        }
+
         return (
             <div>
-                <h2>Sorting Hat Results:</h2>
-                <p>Congratulations! You have been sorted into {sortedHouse}.</p>
-                <button onClick={handleReset}>Reset Quiz</button>
+                <motion.h2 className={`${styles.textColor}`}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, ease: 'linear' }}>Congratulations! Welcome to <span className= {`${houseTheme}`}>{sortedHouse}</span>.</motion.h2>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, ease: 'linear' }}>
+                    {sortedHeads[sortedHouse]}
+                </motion.div>
+                <button className={styles.btn} onClick={handleReset}>Reset Quiz</button>
             </div>
         )
     }
 
-  return (
-
-    <div>
-       {currentQuestion < questions.length ? renderQuestion() : renderResult()}
-    </div>
-  )
+    return (
+        <div className={`${styles.bgQuiz}`}>
+            <NavBar />
+            <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, ease: 'linear' }}>
+                {currentQuestion < 5 ? renderQuestion() : renderResult()}
+            </motion.div>
+        </div>
+    )
 }
 
 export default Quiz;
