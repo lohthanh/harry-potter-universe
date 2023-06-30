@@ -8,5 +8,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded( { extended: true } ));
 require('./routes/users.routes')(app);
+require('./routes/quizresults.routes')(app);
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));

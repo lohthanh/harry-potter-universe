@@ -111,12 +111,12 @@ const Quiz = (props) => {
         )
     }
 
-  return (
+return (
 
     <div>
-       {currentQuestion < questions.length ? renderQuestion() : renderResult()}
+    {currentQuestion < questions.length ? renderQuestion() : renderResult()}
     </div>
-  )
+)
 }
 
 export default Quiz;

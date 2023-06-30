@@ -1,10 +1,31 @@
 const { Users } = require('../models/users.model');
 
-// create
-module.exports.CreateUser = (req, res) => {
-    Users.create( req.body)
-        .then(user => res.json(user) )
-        .catch(err => res.status(400).json(err));
+// create/login controller
+module.exports.CreateUser = {
+    create: async (req, res) => {
+        try { 
+            req.session.user = await Users.create( req.body)
+            await req.session.save();
+            return res.json( req.session.user );
+        } catch ( error ){
+        return res.status(400).json(error);
+        }
+    },
+
+    login: async ( req, res ) => {
+        try {
+            req.session.user = await Users.checklogin(req.body);
+            await req.session.save();
+            return res.json(req.session.user);
+        } catch ( error ) {
+            return res.status(401).json(error)
+        }
+    },
+
+    logout: ( req, res ) => {
+        req.session.destroy();
+        return res.json({ message: 'success'});
+    }
 }
 
 // read
