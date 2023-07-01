@@ -10,21 +10,43 @@ const OneMovie = () => {
     const [displayOneMovie, setDisplayOneMovie] = useState('');
     const { id } = useParams();
     const navigate = useNavigate();
+    const [movieUrl, setMovieUrl] = useState();
+    const [videoId, setVideoId] = useState();
 
     useEffect(() => {
         axios.get('https://api.potterdb.com/v1/movies/' + id)
             .then(res => {
                 console.log(res.data.data.attributes);
                 setDisplayOneMovie(res.data.data.attributes);
+                setMovieUrl(res.data.data.attributes.trailer)
+                console.log(res.data.data.attributes.trailer)
+
+                const extractedVideoId = extractVideoId(res.data.data.attributes.trailer);
+                setVideoId(extractedVideoId);
             })
             .catch(err => console.error(err));
     }, [])
+
+    const extractVideoId = (url) => {
+        const pattern = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+        const match = url && url.match(pattern);
+
+        if (match && match[1]) {
+            return match[1];
+            
+        } else {
+            console.error('Invalid YouTube URL');
+            return null;
+        }
+    };
 
     const goBack = () => {
         navigate(-1)
     }
 
+    
     return (
+
         <div className={`${styles.movieBg}`}>
             <NavBar />
             <div className={`${styles.container2}`}>
@@ -45,11 +67,13 @@ const OneMovie = () => {
 
                     </div>
                     <div >
-                        <video width={720} height={340} controls loop>
-                            <source src={displayOneMovie.trailer} type='video/mp4' />
-                            <source src={displayOneMovie.trailer} type='video/webm' />
-                            Your browser doesn't support video playback.
-                        </video>
+                        <iframe 
+                            width={720}
+                            height={340}
+                            src={`https://www.youtube.com/embed/${videoId}`}
+                            frameborder="0"
+                            allowfullscreen
+                        ></iframe>
                         <p>{displayOneMovie.summary}</p>
                     </div>
                 </div>

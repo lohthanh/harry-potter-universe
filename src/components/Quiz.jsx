@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NavBar from './NavBar';
 import styles from './Display.module.css';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const Quiz = (props) => {
 
@@ -154,6 +155,17 @@ const Quiz = (props) => {
         return shuffleQuestions.slice(0, number);
     };
 
+    const patronus = ['Stag', 'Jack Russell Terrier', 'Otter', 'Horse', 'Hare', 'Phoenix', 'Doe', 'Cat', 'Wold', 'Weasel', 'Lynx', 'Fox', 'Swan', 'Boar', 'Goat']
+    const wandCore = ['Unicorn Hair', 'Dragon Heartstring', 'Phoenix Feather', 'Veela Hair', 'Thestral Tail Hair', 'Troll Whisker', 'Kelpie Hair', 'Thunderbird Tail Feather', 'Wampus Cat Hair', 'White River Monster Spine', 
+                        'Rougarou Hair', 'Kneazle Whiskers', 'Horned Serpent Horn', 'Snallygaster Heartstring', 'Jackalope Antler', 'Basilisk Horn']
+
+    const randomElement = (array) => {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+    };
+
+    const randomPatronus = randomElement(patronus);
+    const randomWandCore = randomElement(wandCore);
 
     const calculateResult = () => {
         const houseVotes = {
@@ -233,12 +245,14 @@ const Quiz = (props) => {
                 break;
         }
 
+
         return (
             <div>
-                <motion.h2 className={`${styles.textColor}`}
+                <motion.h2 className={`${styles.textColor} ${styles.h2Tag}`}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.7, ease: 'linear' }}>Congratulations! Welcome to <span className= {`${houseTheme}`}>{sortedHouse}</span>.</motion.h2>
+                    <p className={`${styles.textColor} ${styles.pTag}`}>Your patronus is {randomPatronus} and your wand core is {randomWandCore}.</p>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}

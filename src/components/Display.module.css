@@ -281,8 +281,17 @@ li {
     color: white;
 }
 
+.pTag {
+    font-size: 22px;
+}
+
+.h2Tag {
+    font-size: 40px;
+}
+
 .gryffindorTheme {
     background: linear-gradient(to right, #ff0000, #ffd700);
+    
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -297,6 +306,7 @@ li {
     background: linear-gradient(to right, #000a90, #222f5b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    
   }
   
   .hufflepuffTheme {
@@ -304,3 +314,30 @@ li {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+/* characters */
+
+.characterList {
+    overflow: auto;
+    height: 500px;
+    width: 280px;
+    padding: 5px;
+    overflow-x: hidden;
+}
+
+.personDisplay {
+    border: 1px solid black;
+    margin-left: 40px;
+    width: 1000px;
+    height: 600px;
+}
+
+.person:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.personImg {
+   width: 250px;
+   border-radius: 50%;
+}
